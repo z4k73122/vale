@@ -1,0 +1,264 @@
+/* Fuentes elegantes */
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Alex+Brush&family=Montserrat:wght@300;400;600&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #030d05;
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- MENSAJE PARA COMPUTADORAS (PANTALLAS GRANDES) --- */
+#mensaje-escritorio {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fcedc2;
+  text-align: center;
+  padding: 20px;
+  font-family: "Cinzel", serif;
+}
+
+#mensaje-escritorio h2 {
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+#mensaje-escritorio p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.9rem;
+  color: #ffffff;
+  opacity: 0.7;
+}
+
+/* --- CONTENEDOR DE LA INVITACIÓN (OCULTO POR DEFECTO) --- */
+.contenedor-invitacion {
+  display: none; /* Se mantiene oculto en pantallas grandes */
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: radial-gradient(circle, #867485 0%, #030d05 100%);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
+  overflow: hidden;
+}
+
+/* =========================================================
+           SOLO DISPOSITIVOS MÓVILES (Pantallas menores a 480px de ancho)
+           ========================================================= */
+@media screen and (max-width: 480px) {
+  /* Ocultamos el mensaje de PC */
+  #mensaje-escritorio {
+    display: none !important;
+  }
+
+  /* Activamos la tarjeta en formato vertical móvil completo */
+  .contenedor-invitacion {
+    display: block;
+  }
+
+  canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  /* --- ESTILO DORADO METÁLICO --- */
+  .texto-dorado-script {
+    font-family: "Alex Brush", cursive;
+    background: linear-gradient(
+      to bottom,
+      #fffdf0 0%,
+      #f3d078 40%,
+      #c59b27 70%,
+      #9a7314 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.8))
+      drop-shadow(0px 0px 10px rgba(212, 175, 55, 0.3));
+    font-weight: normal;
+  }
+
+  .texto-dorado-serif {
+    font-family: "Cinzel", serif;
+    background: linear-gradient(
+      to bottom,
+      #ffffff 0%,
+      #fcedc2 30%,
+      #d4af37 70%,
+      #aa8011 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.9));
+    letter-spacing: 4px;
+  }
+
+  /* --- PORTADA --- */
+  .portada {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 70px 30px;
+    text-align: center;
+    background:
+      linear-gradient(to bottom, rgba(3, 13, 5, 0.85), rgba(3, 13, 5, 0.6)),
+      url("/img/Copilot_20260616_135556.png") center/cover;
+    transition: opacity 0.5s ease-out;
+  }
+
+  .portada-oculta {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .portada h3 {
+    font-size: 2rem;
+    margin: 0;
+    font-style: italic;
+    font-family: "Alex Brush", cursive;
+    background: linear-gradient(to bottom, #ffffff, #f0d580);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .portada h1 {
+    font-size: 5.5rem;
+    margin: 10px 0;
+  }
+
+  .btn-abrir {
+    background: linear-gradient(135deg, #a67c1e 0%, #fcedc2 50%, #a67c1e 100%);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 16px 40px;
+    color: #030d05;
+    font-family: "Cinzel", serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow:
+      0 5px 20px rgba(0, 0, 0, 0.5),
+      0 0 15px rgba(212, 175, 55, 0.4);
+    letter-spacing: 3px;
+    z-index: 6;
+  }
+
+  /* --- DETALLES INTERNOS --- */
+  .info-detalles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 34px;
+    text-align: center;
+    color: #fff;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.9s cubic-bezier(0.215, 0.61, 0.355, 1) 0.3s;
+    background:
+      linear-gradient(to bottom, rgba(3, 13, 5, 0.6), rgba(3, 13, 5, 0.85)),
+      url("/img/Copilot_20260616_135556.png") center/cover;
+  }
+
+  .info-activa {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .info-detalles .intro {
+    font-family: "Cinzel", serif;
+    color: #fcedc2;
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+  }
+
+  .info-detalles h2 {
+    font-size: 4.2rem;
+    margin: 5px 0 25px 0;
+  }
+
+  .separador {
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #d4af37, transparent);
+    margin: 0 auto 25px auto;
+    position: relative;
+  }
+
+  .separador::after {
+    content: "✦";
+    position: absolute;
+    top: -7px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #d4af37;
+    font-size: 0.6rem;
+  }
+
+  .poema {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #e0e0e0;
+    line-height: 1.7;
+    margin-bottom: 35px;
+    max-width: 330px;
+  }
+
+  .dato-bloque {
+    margin-bottom: 22px;
+    width: 100%;
+  }
+
+  .dato-bloque .titulo-dato {
+    font-size: 0.8rem;
+    margin-bottom: 6px;
+  }
+
+  .dato-bloque .desc-dato {
+    font-size: 1rem;
+    font-weight: 300;
+  }
+
+  .btn-confirmar {
+    margin-top: 15px;
+    background: transparent;
+    border: 1px solid #d4af37;
+    padding: 12px 30px;
+    color: #fcedc2;
+    font-family: "Cinzel", serif;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+}
